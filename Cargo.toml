@@ -1,0 +1,18 @@
+[package]
+name = "crate-metadata"
+version = "0.1.0"
+edition = "2021"
+description = "Utility functions to get current crate metadata."
+authors = ["Alex Koz <a@koz.email>"]
+documentation = "https://docs.rs/crate-metadata"
+keywords = ["cargo", "crate", "metadata"]
+categories = ["development-tools::build-utils"]
+homepage = "https://github.com/boozook/crate-metadata"
+repository = "https://github.com/boozook/crate-metadata.git"
+license = "MIT"
+readme = "README.md"
+
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
