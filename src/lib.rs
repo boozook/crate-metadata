@@ -54,15 +54,8 @@ pub fn cargo_metadata<Metadata>() -> Result<CargoMetadata<Metadata>>
 /// ```
 pub fn crate_metadata_for<Metadata, P: AsRef<Path>>(manifest: P, name: &str) -> Result<CargoMetadata<Metadata>>
 	where for<'de> Metadata: serde::de::Deserialize<'de> {
-	let manifest_path_str = manifest.as_ref()
-	                                .to_str()
-	                                .ok_or(IoError::new(IoErrorKind::InvalidInput, CARGO_MANIFEST))?;
-
 	let mut metadata: CargoMetadata<Metadata> = cargo_metadata_for(&manifest)?;
-	metadata.packages = metadata.packages
-	                            .into_iter()
-	                            .filter(|p| p.name == name && p.manifest_path == manifest_path_str)
-	                            .collect();
+	metadata.packages = metadata.packages.into_iter().filter(|p| p.name == name).collect();
 
 	Ok(metadata)
 }
