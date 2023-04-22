@@ -1,4 +1,4 @@
-required_version = "1.5.1"
+required_version = "1.5.2"
 unstable_features = true
 edition = "2018"
 
@@ -6,7 +6,7 @@ edition = "2018"
 max_width = 134
 comment_width = 124
 
-fn_args_layout = "Tall"
+fn_params_layout = "Tall"
 use_small_heuristics = "Default"
 
 # Indentation:
