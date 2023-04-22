@@ -90,7 +90,8 @@ pub fn cargo_metadata_for<Metadata, P: AsRef<Path>>(manifest: P) -> Result<Cargo
 	            manifest_path_str,
 	];
 
-	let metadata_json_raw = Command::new("cargo").args(&args).output()?;
+	let cargo = env::var("CARGO").ok().unwrap_or("cargo".to_string());
+	let metadata_json_raw = Command::new(cargo).args(&args).output()?;
 	let stdout = std::str::from_utf8(&metadata_json_raw.stdout)?;
 
 	serde_json::from_str(stdout).map_err(Into::into)
